@@ -24,17 +24,34 @@ fn play_with_friend() {
     let player2_move = get_player_move(2);
 
     if player1_move == player2_move {
-        println!("It is a draw");
+        println!("it is a draw");
     } else if (player1_move == "rock" && player2_move == "scissor")
         || (player1_move == "paper" && player2_move == "rock")
             || (player1_move == "scissor" && player2_move == "paper")
     {
-        println!("Player 1 won!");
+        println!("player 1 won!");
     } else {
-        println!("Player 2 won!");
+        println!("player 2 won!");
     }
 }
 
-fn main() {
-    play_with_friend();
+fn play_with_bot() {
+    let player_move = get_player_move(1);
+    let bot_move = get_player_move(2);
+
+    if player1_move == player2_move {
+        println!("it is a draw");
+    } else if (player_move == "rock" && bot_move == "scissor")
+        || (player_move == "paper" &&  bot_move == "rock")
+            || (player_move == "scissor" && bot_move == "paper")
+    {
+        println!("Player won!");
+    } else {
+        println!("Bot won");
+
+    }
 }
+
+    fn main() {
+        play_with_friend();
+    }

@@ -1,4 +1,6 @@
-use std::{io, string};
+use std::{io, vec};
+use ran::Rng;
+use rand::{random, Rng};
 
 fn get_player_move(player_num : i32) -> String {
     loop {
@@ -19,6 +21,15 @@ fn get_player_move(player_num : i32) -> String {
     }
 }
 
+fn get_bot_move() {
+    let mut rng = rand::thread_rng();
+    let random_index : i32 = rng.gen_range(1..=3);
+
+    let moves = vec!["rock", "paper", "scissor"];
+    let mut bot_move = String::new();
+
+    bot_move = moves[random_index];
+}
 fn play_with_friend() {
     let player1_move = get_player_move(1);
     let player2_move = get_player_move(2);
@@ -39,7 +50,7 @@ fn play_with_bot() {
     let player_move = get_player_move(1);
     let bot_move = get_player_move(2);
 
-    if player1_move == player2_move {
+    if player_move == bot_move {
         println!("it is a draw");
     } else if (player_move == "rock" && bot_move == "scissor")
         || (player_move == "paper" &&  bot_move == "rock")

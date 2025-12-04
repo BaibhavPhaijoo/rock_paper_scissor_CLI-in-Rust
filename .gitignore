@@ -1,0 +1,21 @@
+# Ignore the build output directory
+/target/
+
+# Ignore executables in src (if any were accidentally placed there)
+/src/*.exe
+
+# Ignore executables in root (common during testing)
+/*.exe
+
+# Ignore macOS and Linux binaries
+/*.out
+/*.bin
+
+# Ignore IDE/editor files
+**/*.swp
+**/*.swo
+.idea/
+.vscode/
+
+# Ignore Cargo-specific files
+#Cargo.lock

@@ -23,7 +23,7 @@ fn get_player_move(player_num : i32) -> String {
 
 fn get_bot_move() -> String {
     let mut rng = rand::thread_rng();
-    let random_index : i32 = rng.gen_range(0..=3);
+    let random_index = rng.gen_range(0..=3);
 
     let moves = ["rock", "paper", "scissor"];
     moves[random_index].to_string()

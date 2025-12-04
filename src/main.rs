@@ -1,4 +1,5 @@
 extern crate rand;
+use clearscreen;
 use std::{io, vec};
 use rand::{random, Rng};
 
@@ -9,6 +10,7 @@ fn get_player_move(player_num : i32) -> String {
         println!("Player {}'s turn.", player_num);
         io::stdin().read_line(&mut input).expect("could not read input");
         let move_cleaned = input.trim().to_lowercase();
+        clearscreen::clear().expect("Failed to clear the screen");
 
         if move_cleaned == "rock" || move_cleaned == "paper" || move_cleaned == "scissor" {
             return move_cleaned;
@@ -50,6 +52,7 @@ fn play_with_bot() {
     let bot_move = get_bot_move(); 
 
 
+    clearscreen::clear().expect("Failed to clear the screen");
     println!("Bot chose: {}", bot_move);
     if player_move == bot_move {
         println!("It is a draw");

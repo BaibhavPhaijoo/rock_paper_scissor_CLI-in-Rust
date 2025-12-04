@@ -39,9 +39,9 @@ fn play_with_friend() {
         || (player1_move == "paper" && player2_move == "rock")
             || (player1_move == "scissor" && player2_move == "paper")
     {
-        println!("player 1 won!");
+        println!("Player 1 won!");
     } else {
-        println!("player 2 won!");
+        println!("Player 2 won!");
     }
 }
 
@@ -52,7 +52,7 @@ fn play_with_bot() {
 
     println!("Bot chose: {}", bot_move);
     if player_move == bot_move {
-        println!("it is a draw");
+        println!("It is a draw");
     } else if (player_move == "rock" && bot_move == "scissor")
         || (player_move == "paper" &&  bot_move == "rock")
             || (player_move == "scissor" && bot_move == "paper")

@@ -1,13 +1,13 @@
+extern crate rand;
 use std::{io, vec};
-use ran::Rng;
 use rand::{random, Rng};
 
 fn get_player_move(player_num : i32) -> String {
     loop {
         let mut input = String::new();
 
-        println!("Player {}'s turn.", player_num);
-        io::stdin().read_line(&mut input).expect("Could not read input");
+        println!("player {}'s turn.", player_num);
+        io::stdin().read_line(&mut input).expect("could not read input");
         let move_cleaned = input.trim().to_lowercase();
 
         if move_cleaned == "rock" || move_cleaned == "paper" || move_cleaned == "scissor" {
@@ -21,15 +21,14 @@ fn get_player_move(player_num : i32) -> String {
     }
 }
 
-fn get_bot_move() {
+fn get_bot_move() -> String {
     let mut rng = rand::thread_rng();
-    let random_index : i32 = rng.gen_range(1..=3);
+    let random_index : i32 = rng.gen_range(0..=3);
 
-    let moves = vec!["rock", "paper", "scissor"];
-    let mut bot_move = String::new();
-
-    bot_move = moves[random_index];
+    let moves = ["rock", "paper", "scissor"];
+    moves[random_index].to_string()
 }
+
 fn play_with_friend() {
     let player1_move = get_player_move(1);
     let player2_move = get_player_move(2);
@@ -48,8 +47,10 @@ fn play_with_friend() {
 
 fn play_with_bot() {
     let player_move = get_player_move(1);
-    let bot_move = get_player_move(2);
+    let bot_move = get_bot_move(); 
 
+
+    println!("Bot chose: {}", bot_move);
     if player_move == bot_move {
         println!("it is a draw");
     } else if (player_move == "rock" && bot_move == "scissor")
@@ -63,6 +64,15 @@ fn play_with_bot() {
     }
 }
 
-    fn main() {
+fn main() {
+    let mut game_choose : String = String::new();
+    println!("Write your choice \n1. Play with friend\t 2. Play with bot");
+    io::stdin() 
+        .read_line(&mut game_choose)
+        .expect("couldn't read input");
+    if game_choose.trim() == "1" {
         play_with_friend();
+    } else {
+        play_with_bot();
     }
+}

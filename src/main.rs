@@ -6,7 +6,7 @@ fn get_player_move(player_num : i32) -> String {
     loop {
         let mut input = String::new();
 
-        println!("player {}'s turn.", player_num);
+        println!("Player {}'s turn.", player_num);
         io::stdin().read_line(&mut input).expect("could not read input");
         let move_cleaned = input.trim().to_lowercase();
 

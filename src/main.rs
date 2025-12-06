@@ -69,13 +69,35 @@ fn play_with_bot() {
 
 fn main() {
     let mut game_choose : String = String::new();
-    println!("Write your choice \n1. Play with friend\t 2. Play with bot");
-    io::stdin() 
-        .read_line(&mut game_choose)
-        .expect("couldn't read input");
-    if game_choose.trim() == "1" {
-        play_with_friend();
-    } else {
-        play_with_bot();
+    let mut is_playing : bool = true;
+    let mut choice_to_play_again : String = String::new();
+    while is_playing {
+
+        println!("Write your choice \n1. Play with friend\t 2. Play with bot");
+        io::stdin() 
+            .read_line(&mut game_choose)
+            .expect("couldn't read input");
+        if game_choose.trim() == "1" {
+            play_with_friend();
+        } else {
+            play_with_bot();
+        }
+
+        println!("Do you want to play again, yes or no");
+        io::stdin()
+            .read_line(&mut choice_to_play_again)
+            .expect("Couldn't read input");
+        if choice_to_play_again.trim().to_lowercase() == "yes" ||
+            choice_to_play_again.trim().to_lowercase() == "y" {
+                is_playing = true;
+            } else if choice_to_play_again.trim().to_lowercase() == "no" ||
+                choice_to_play_again.trim().to_lowercase() == "n" {
+                    is_playing = false;
+                } else {
+                    println!("Invalid choice, defaulting to not playing again");
+                    is_playing = false;
+            }
     }
+
+
 }
